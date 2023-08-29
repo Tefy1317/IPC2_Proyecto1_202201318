@@ -1,4 +1,8 @@
 import xml.etree.ElementTree as ET
+from Datos.senal import*
+from Datos.dato import*
+from Listas.listaDatos import*
+from Listas.listaSenales import*
 
 opcion = 0 
 #Menú
@@ -22,12 +26,49 @@ while(opcion != 6):
 
         ruta = input("Ingrese ruta de archivo a cargar: ")
         archivoCargado = ET.parse(ruta)
+        print(" ")
+        print("--"*30)
         print("ARCHIVO CARGADO CORRECTAMETE")
+        print("--"*30)
+        print(" ")
+        print(" ")
         pass
     elif opcion == 2: 
         print("--"*30)
         print("PROCESAR ARCHIVO")
         print("--"*30)
+        Raiz = archivoCargado.getroot()
+        listaSenalesInicial = listaSenales()
+        for elementos in Raiz.findall('senal'):
+            nombreSenal = elementos.get('nombre')
+            filasSenal = elementos.get('t')
+            columnasSenal = elementos.get('A')
+            print(" ")
+            print("Guardando datos cargados...")
+            print(" ")
+            listaDatosIncial = listaDatos()
+            listaPatronDatos = listaDatos()
+
+            for datos in elementos.findall('dato'):
+                tiempo = datos.get('t')
+                amplitud = datos.get('A')
+                datoX = datos.text
+                nuevoDato = Dato(int(tiempo), int(amplitud), int(datoX))
+                listaDatosIncial.insertarDato(nuevoDato)
+                
+                if int(datoX) != 0: 
+                    nuevoDato = Dato(int(tiempo), int(amplitud), 1)
+                    listaPatronDatos.insertarDato(nuevoDato)
+                else: 
+                    nuevoDato = Dato(int(tiempo), int(amplitud), 0)
+                    listaPatronDatos.insertarDato(nuevoDato)
+            print(" ")
+            print("Calculando Matriz Binaria...")
+            print(" ")
+            listaSenalesInicial.insertarDato(Senal(nombreSenal, int(filasSenal), int(columnasSenal), listaDatosIncial, listaPatronDatos))
+            listaSenalesInicial.imprimirNoSenales()
+
+        listaSenalesInicial.imprimirListaSenales()
         pass
     elif opcion == 3: 
         print("--"*30)
