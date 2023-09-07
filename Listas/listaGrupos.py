@@ -1,3 +1,5 @@
+import xml.etree.ElementTree as ET
+import xml.dom.minidom as minidom
 from Listas.nodoGrupos import*
 from Listas.listaMatrizReducida import*
 from Datos.grupos import*
@@ -50,10 +52,10 @@ class listaGrupos:
                 listaMatrizTemp.InsertarDato(suma = Suma(nombreSenal, grupo,amplitud,numeroActual))
             actual = actual.siguiente 
         listaMatrizTemp.ImprimirListaMatrizR()
-        #print("")
-        #print("")
-        #print("***"*30)
+        
 
+        
+        
    
     
             

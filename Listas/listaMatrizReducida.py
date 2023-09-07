@@ -68,6 +68,7 @@ class listaMatrizReducida:
                     #print("")
                 #print("")
                 #print("AA"*30)
-            mgrupo=mgrupo.siguiente
-#DESCOMENTAR PARA MOSTRAR LA MATRIZ FINAL YA SUMADA        
+            mgrupo=mgrupo.siguiente      
         listaFinal.ImprimirListaMatrizReducidaFinal()
+        listaFinal.crearGraficaMatrizReducida(amplitud)
+        #listaFinal.generarXml()

@@ -1,10 +1,12 @@
 import xml.etree.ElementTree as ET
+import xml.dom.minidom as minidom
 from Datos.senal import*
 from Datos.dato import*
 from Listas.listaDatos import*
 from Listas.listaSenales import*
 from Listas.listaPatron import*
 from Listas.listaGrupos import*
+from Listas.listaMatrizFinal import*
 os.system('cls')
 opcion = 0 
 #Menú
@@ -21,7 +23,6 @@ while(opcion != 7):
     print("7. Salir")
     print("Ingrese una opción: ")
     opcion = int(input())
-
     if opcion == 1:
         print("--"*30)
         print("CARGAR ARCHIVO")
@@ -100,12 +101,8 @@ while(opcion != 7):
         print("--"*30)
         print("ESCRIBIR ARCHIVO SALIDA")
         print("--"*30)
-        
-        root = ET.Element("señalesReducidas")
-        tree = ET.ElementTree(root)
-        with open("archivo.xml", "wb") as file:
-            tree.write(file, encoding="utf-8", xml_declaration=True)
-
+        print("")
+        print("ARCHIVO XML CREADO CON EXITO")
         pass
     elif opcion == 4: 
         print("--"*30)
@@ -123,6 +120,7 @@ while(opcion != 7):
         print("--"*30)
         nombreSenalUsuario = input("Ingrese el nombre de la señal que quiere graficar:")
         listaSenalesInicial.graficarListaOriginal(nombreSenalUsuario)
+        
     elif opcion == 6:
         print("--"*30)
         print("INICIALIZAR SISTEMA")

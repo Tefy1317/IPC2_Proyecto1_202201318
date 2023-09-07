@@ -1,3 +1,5 @@
+import xml.etree.ElementTree as ET
+import xml.dom.minidom as minidom
 from Listas.nodoSenal import* 
 from Datos.grupos import*
 from Listas.listaPatron import*
@@ -96,3 +98,6 @@ class listaSenales:
                     dot = actual.senal.listaDatos.crearGraficaOriginal(actual.senal.nombre, str(actual.senal.filas), str(actual.senal.columnas))
                     return dot
                 actual = actual.siguiente
+
+    
+  
